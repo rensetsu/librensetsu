@@ -124,10 +124,12 @@ class RelationMaps:
     """Kaize slug: https://kaize.io"""
     kitsu: Optional[int] = None
     """Kitsu ID: https://kitsu.io"""
+    kinopoisk: Optional[int] = None
+    """Kinopoisk ID (Regional, RU): https://kinopoisk.ru"""
     kurozora: Optional[int] = None
     """Kurozora ID, successor to Aozora: https://kurozora.app"""
     lain: Optional[int] = None
-    """Lain ID: https://lain.gr.jp"""
+    """Lain ID (Regional, JP): https://lain.gr.jp"""
     livechart: Optional[int] = None
     """LiveChart ID: https://www.livechart.me"""
     letterboxd: Optional[str] = None
@@ -172,6 +174,8 @@ class RelationMaps:
     """VNDB ID: https://vndb.org"""
     wikidata: Optional[str] = None
     """Wikidata ID: https://www.wikidata.org"""
+    worldarts: Optional[int] = None
+    """World Art ID (Regional, RU): http://www.world-art.ru"""
     others: Dict[str, Union[int, str]] = {}
     """Other IDs"""
 
@@ -188,6 +192,8 @@ class BasicMediaInfo:
     """The title of the media transliterated into the Latin alphabet"""
     title_english: Optional[str]
     """The title of the media in English"""
+    synonyms: Optional[List[str]]
+    """Synonyms of the media"""
     is_adult: Optional[bool]
     """Whether the media is adult content, `None` if service does not provide this information"""
     media_type: Literal["anime", "manga", "lightnovel", "shows", "movies", "books", "other"]
