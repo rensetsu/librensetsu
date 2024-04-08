@@ -176,7 +176,7 @@ class RelationMaps:
     """Wikidata ID: https://www.wikidata.org"""
     worldarts: Optional[int] = None
     """World Art ID (Regional, RU): http://www.world-art.ru"""
-    others: Dict[str, Union[int, str]] = {}
+    others: Optional[Dict[str, Union[int, str]]] = None
     """Other IDs"""
 
 @dataclass
