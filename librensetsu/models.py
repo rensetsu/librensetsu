@@ -168,7 +168,7 @@ class RelationMaps:
     """VNDB ID: https://vndb.org"""
     wikidata: Optional[str] = None
     """Wikidata ID: https://www.wikidata.org"""
-    others: Dict[str, Union[int, str]] = None
+    others: Dict[str, Union[int, str]] = {}
     """Other IDs"""
 
 @dataclass
@@ -186,7 +186,7 @@ class BasicMediaInfo:
     """The title of the media in English"""
     is_adult: Optional[bool]
     """Whether the media is adult content, `None` if service does not provide this information"""
-    media_type: Optional[Literal["anime", "manga", "lightnovel", "shows", "movies", "books", "other"]]
+    media_type: Literal["anime", "manga", "lightnovel", "shows", "movies", "books", "other"]
     """The type of media"""
     media_sub_type: Optional[str]
     """The sub-type of media, if applicable"""

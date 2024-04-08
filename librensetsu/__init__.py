@@ -1,12 +1,11 @@
-from .models import Date, Iso31661A2, PictureUrls, RelationMaps, BasicMediaInfo, MediaInfo
+from .models import Date, PictureUrls, RelationMaps, BasicMediaInfo, MediaInfo
 
 __version__ = '0.1.0'
 
 __all__ = [
+    'BasicMediaInfo',
     'Date',
-    'Iso31661A2',
+    'MediaInfo'
     'PictureUrls',
     'RelationMaps',
-    'BasicMediaInfo',
-    'MediaInfo'
 ]
