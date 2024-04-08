@@ -130,6 +130,8 @@ class RelationMaps:
     """Lain ID: https://lain.gr.jp"""
     livechart: Optional[int] = None
     """LiveChart ID: https://www.livechart.me"""
+    letterboxd: Optional[str] = None
+    """Letterboxd slug: https://letterboxd.com"""
     mangadex: Optional[str] = None
     """MangaDex UUID: https://mangadex.org"""
     mangaupdates: Optional[int] = None
@@ -148,6 +150,8 @@ class RelationMaps:
     """Otak Otaku ID (Regional, ID): https://otakotaku.com"""
     otakotaku_slug: Optional[str] = None
     """Otak Otaku slug (Regional, ID): https://otakotaku.com"""
+    rotten_tomatoes: Optional[str] = None
+    """Rotten Tomatoes slug: https://www.rottentomatoes.com"""
     silveryasha: Optional[int] = None
     """Silver-Yasha DB Tontonan Indonesia (Regional, ID): https://db.silveryasha.web.id"""
     shikimori: Optional[int] = None
