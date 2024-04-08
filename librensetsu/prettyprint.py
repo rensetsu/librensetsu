@@ -1,6 +1,7 @@
 """Pretty print for the proccess"""
 from enum import Enum
 from datetime import datetime
+from typing import Optional
 
 class Platform(Enum):
     """Platform color to be used for pretty printing."""
@@ -11,7 +12,6 @@ class Platform(Enum):
     ANISEARCH = 0xFDA37C
     ANIMENEWSNETWORK = 0x2D50A7
     ANNICT = 0xF65B73
-    FRIBB = 0x212121
     IMDB = 0xF5C518
     KAIZE = 0x692FC2
     KITSU = 0xF85235
@@ -29,9 +29,6 @@ class Platform(Enum):
     TVDB = 0x6CD491
     TVTIME = 0xFBD737
     SYSTEM = 0x000000
-    ARM = 0x222222
-    ANIMEOFFLINEDATABASE = 0x101010
-    ANITRAKT = 0xED1C24
 
 
 class Status(Enum):
@@ -71,15 +68,21 @@ def translate_hex_to_rgb(hex_: int) -> tuple[int, int, int]:
 class PrettyPrint:
     """Pretty print for the proccess"""
 
-    def __init__(self, show_date: bool = True, show_time: bool = True) -> None:
+    def __init__(self,
+                 platform: Platform = Platform.SYSTEM,
+                 show_date: bool = True,
+                 show_time: bool = True) -> None:
         """
         Initialize the pretty print class
 
+        :param platform: The platform to be used, defaults to Platform.SYSTEM
+        :type platform: Platform, optional
         :param show_date: Show the date, defaults to True
         :type show_date: bool, optional
         :param show_time: Show the time, defaults to True
         :type show_time: bool, optional
         """
+        self.platform = platform
         self.show_date = show_date
         self.show_time = show_time
         self.previously_clear = False
@@ -134,24 +137,24 @@ class PrettyPrint:
 
     def print(
         self,
-        platform: Platform,
         status: Status,
         *args: str,
         clean_line: bool = False,
+        platform: Optional[Platform] = None,
         end: str = "\n",
         sep: str = " ",
     ) -> None:
         """
         Print the data
 
-        :param platform: The platform to be used
-        :type platform: Platform
         :param status: The status to be used
         :type status: Status
         :param args: The arguments to be printed
         :type args: str
         :param clean_line: Clean the line, defaults to False
         :type clean_line: bool, optional
+        :param platform: The platform to be used, defaults to None (`Platform.SYSTEM`)
+        :type platform: Platform, optional
         :param end: The end character, defaults to "\\n"
         :type end: str, optional
         :param sep: The separator, defaults to " "
@@ -161,6 +164,8 @@ class PrettyPrint:
         if clean_line and end == "\n":
             raise ValueError("clean_line and end cannot be used together")
         anullen = ""
+        if not platform:
+            platform = self.platform
         if clean_line:
             anullen = "\033[2K\r"
             self.previously_clear = True
