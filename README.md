@@ -10,7 +10,7 @@ Simply install the package as git on `pip`.
 pip install git+https://github.com/rensetsu/librensetsu.git
 ```
 
-## Additional notes
+## Regarding Dependencies
 
 This library will download all orphaned dependencies for you to utilize it
 without any additional setup, so only this package is needed to be installed.
@@ -26,6 +26,7 @@ unifieddatabase.
 - `cloudscraper`: Cloudflare bypassing library
 - `cutlet`: Handle Japanese text transliteration to Latin
 - `fake-useragent`: Random user agent generator
+- `fugashi[unidic-lite]`: Japanese tokenizer, required by `cutlet`
 - `fuzzywuzzy`: Fuzzy string matching library
 - `python-Levenshtein`: Levenshtein distance calculation library, required by
   `fuzzywuzzy`

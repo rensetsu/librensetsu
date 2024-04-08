@@ -1098,9 +1098,6 @@ char_maps = {
     '®':'(r)'
 }
 
-romaji = Cutlet()
-"""Initialize the transliteration object"""
-
 def transliterate_no_accent(text: str, is_japanese: bool = False) -> str:
     """
     Transliterate a text to Latin alphanumeric without accent marks
@@ -1112,7 +1109,7 @@ def transliterate_no_accent(text: str, is_japanese: bool = False) -> str:
     :rtype: str
     """
     if is_japanese:
-        text = romaji.romaji(text)
+        text = Cutlet().romaji(text)
     for k, v in char_maps.items():
         text = text.replace(k, v)
     return text
