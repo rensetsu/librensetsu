@@ -16,7 +16,6 @@ dependencies = [
     "fake-useragent",
     "fuzzywuzzy",
     "python-Levenshtein",
-    "rich"
 ]
 requires-python = ">=3.10"
 license = {text = "MIT"}
