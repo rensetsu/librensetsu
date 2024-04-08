@@ -24,6 +24,7 @@ unifieddatabase.
 - `alive-progress`: Progress bar for long running tasks
 - `beautifulsoup4`: HTML parser
 - `cloudscraper`: Cloudflare bypassing library
+- `cutlet`: Handle Japanese text transliteration to Latin
 - `fake-useragent`: Random user agent generator
 - `fuzzywuzzy`: Fuzzy string matching library
 - `python-Levenshtein`: Levenshtein distance calculation library, required by
