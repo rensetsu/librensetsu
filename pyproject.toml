@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "librensetsu"
+authors = [
+    {name = "nattadasu", email = "hello@nattadasu.my.id"}
+]
+dependencies = [
+    "beautifulsoup4",
+    "requests",
+    "alive-progress",
+    "cloudscraper",
+    "fake-useragent",
+    "fuzzywuzzy",
+    "python-Levenshtein"
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+description = "A Python library for scraping and parsing data from various websites."
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+    "Topic :: Internet :: WWW/HTTP :: Site Management",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Typing :: Typed"
+]
+keywords = ["web scraping", "data parsing", "web crawling", "web spider", "web scraper", "data scraper", "data crawler", "data spider"]
+dynamic = ["version", "readme"]
+
+[project.urls]
+Source = "https://github.com/rensetsu/librensetsu"
+Documentation = "https://github.com/rensetsu/librensetsu#readme"
+Homepage = "https://github.com/rensetsu/librensetsu"
+
+[tool.setuptools.build_meta]
+requires-python = ">=3.10"
+
+[tool.setuptools.dynamic]
+version = { attr = "librensetsu.__version__" }
+readme = { file = "README.md", content-type = "text/markdown" }
