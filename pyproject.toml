@@ -44,9 +44,6 @@ Source = "https://github.com/rensetsu/librensetsu"
 Documentation = "https://github.com/rensetsu/librensetsu#readme"
 Homepage = "https://github.com/rensetsu/librensetsu"
 
-[tool.setuptools.build_meta]
-requires-python = ">=3.10"
-
 [tool.setuptools.dynamic]
 version = { attr = "librensetsu.__version__" }
 readme = { file = "README.md", content-type = "text/markdown" }
