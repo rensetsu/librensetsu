@@ -31,6 +31,28 @@ Iso31661A2 = Literal[
 ]
 """ISO 3166-1 alpha-2 approved country codes"""
 
+Iso639S2 = Literal[
+    "ab", "aa", "af", "ak", "sq", "am", "ar", "an", "hy", "as",
+    "av", "ae", "ay", "az", "bm", "ba", "eu", "be", "bn", "bi",
+    "bs", "br", "bg", "my", "ca", "ch", "ce", "ny", "zh", "cu",
+    "cv", "kw", "co", "cr", "hr", "cs", "da", "dv", "nl", "dz",
+    "en", "eo", "et", "ee", "fo", "fj", "fi", "fr", "fy", "ff",
+    "gd", "gl", "lg", "ka", "de", "el", "kl", "gn", "gu", "ht",
+    "ha", "he", "hz", "hi", "ho", "hu", "is", "io", "ig", "id",
+    "ia", "ie", "iu", "ik", "ga", "it", "ja", "jv", "kn", "kr",
+    "ks", "kk", "km", "ki", "rw", "ky", "kv", "kg", "ko", "kj",
+    "ku", "lo", "la", "lv", "li", "ln", "lt", "lu", "lb", "mk",
+    "mg", "ms", "ml", "mt", "gv", "mi", "mr", "mh", "mn", "na",
+    "nv", "nd", "nr", "ng", "ne", "no", "nb", "nn", "ii", "oc",
+    "oj", "or", "om", "os", "pi", "ps", "fa", "pl", "pt", "pa",
+    "qu", "ro", "rm", "rn", "ru", "se", "sm", "sg", "sa", "sc",
+    "sr", "sn", "sd", "si", "sk", "sl", "so", "st", "es", "su",
+    "sw", "ss", "sv", "tl", "ty", "tg", "ta", "tt", "te", "th",
+    "bo", "ti", "to", "ts", "tn", "tr", "tk", "tw", "ug", "uk",
+    "ur", "uz", "ve", "vi", "vo", "wa", "cy", "wo", "xh", "yi",
+    "yo", "za", "zu"
+]
+
 @dataclass
 class Date:
     """Information regarding release dates"""
@@ -86,6 +108,22 @@ class PictureUrls:
     """A tiny picture URL"""
 
 @dataclass
+class IdSlugPair:
+    """Information regarding ID and slug pairs"""
+    id: Optional[Union[int, str]] = None
+    """The ID of the media"""
+    slug: Optional[str] = None
+    """The slug of the media"""
+
+@dataclass
+class ConventionalMapping(IdSlugPair):
+    """Mapping information for conventional media databases"""
+    media_type: Optional[Literal["tv", "movie", "shows", "movies"]] = None
+    """The type of media"""
+    season: Optional[int] = None
+    """The season of the media, if applicable"""
+
+@dataclass
 class RelationMaps:
     """Information regarding direct relation maps"""
     allcinema: Optional[int] = None
@@ -112,17 +150,13 @@ class RelationMaps:
     """Bangumi (bgm.tv) ID (Regional, CN): https://bgm.tv"""
     douban: Optional[int] = None
     """Douban ID (Regional, CN): https://movie.douban.com"""
-    doujinshi: Optional[str] = None
+    doujinshi: Optional[IdSlugPair] = None
     """Doujinshi.info Unique ID: https://doujinshi.info"""
-    doujinshi_slug: Optional[str] = None
-    """Doujinshi.info slug: https://doujinshi.info"""
-    imdb: Optional[str] = None
+    imdb: Optional[ConventionalMapping] = None
     """IMDb ID: https://www.imdb.com"""
-    kaize: Optional[int] = None
+    kaize: Optional[IdSlugPair] = None
     """Kaize ID: https://kaize.io"""
-    kaize_slug: Optional[str] = None
-    """Kaize slug: https://kaize.io"""
-    kitsu: Optional[int] = None
+    kitsu: Optional[IdSlugPair] = None
     """Kitsu ID: https://kitsu.io"""
     kinopoisk: Optional[int] = None
     """Kinopoisk ID (Regional, RU): https://kinopoisk.ru"""
@@ -140,36 +174,34 @@ class RelationMaps:
     """MangaUpdates ID: https://www.mangaupdates.com"""
     myanimelist: Optional[int] = None
     """MyAnimeList ID: https://myanimelist.net"""
-    nautiljon: Optional[int] = None
+    nautiljon: Optional[IdSlugPair] = None
     """Nautiljon ID (Regional, FR): https://www.nautiljon.com"""
-    nautiljon_slug: Optional[str] = None
-    """Nautiljon slug (Regional, FR): https://www.nautiljon.com"""
     notify: Optional[str] = None
     """Notify.moe Base64 ID: https://notify.moe"""
     novelupdates: Optional[str] = None
     """NovelUpdates slug: https://www.novelupdates.com"""
-    otakotaku: Optional[int] = None
+    otakotaku: Optional[IdSlugPair] = None
     """Otak Otaku ID (Regional, ID): https://otakotaku.com"""
-    otakotaku_slug: Optional[str] = None
-    """Otak Otaku slug (Regional, ID): https://otakotaku.com"""
-    rotten_tomatoes: Optional[str] = None
+    rottentomatoes: Optional[str] = None
     """Rotten Tomatoes slug: https://www.rottentomatoes.com"""
     silveryasha: Optional[int] = None
     """Silver-Yasha DB Tontonan Indonesia (Regional, ID): https://db.silveryasha.web.id"""
-    shikimori: Optional[int] = None
-    """Shikimori ID, mirrors MyAnimeList (Regional, RU): https://shikimori.one"""
+    shikimori: Optional[IdSlugPair] = None
+    """
+    Shikimori ID, mirrors MyAnimeList (Regional, RU): https://shikimori.one
+    
+    Slug most of the time is equal to ID, however, some title may have additiona
+    alphabet as the prefix (eg. `z28977`). Use slug to redirect user without
+    HTTP 301, eg: https://shikimori.one/animes/z28977
+    """
     syoboical: Optional[int] = None
     """Syoboi Calender ID (Regional, JP): https://cal.syoboi.jp"""
-    tmdb: Optional[int] = None
+    tmdb: Optional[ConventionalMapping] = None
     """The Movie Database ID: https://www.themoviedb.org"""
-    tvdb: Optional[int] = None
+    tvdb: Optional[ConventionalMapping] = None
     """The TVDB ID: https://www.thetvdb.com"""
-    tvdb_slug: Optional[str] = None
-    """The TVDB slug: https://www.thetvdb.com"""
-    trakt: Optional[int] = None
+    trakt: Optional[ConventionalMapping] = None
     """Trakt ID: https://trakt.tv"""
-    trakt_slug: Optional[str] = None
-    """Trakt slug: https://trakt.tv"""
     vndb: Optional[int] = None
     """VNDB ID: https://vndb.org"""
     wikidata: Optional[str] = None
@@ -180,7 +212,7 @@ class RelationMaps:
     """Other IDs"""
 
 @dataclass
-class BasicMediaInfo:
+class MediaInfo:
     """Information regarding media"""
     uuid: str
     """The UUID of the media, used to correlate with the provider"""
@@ -202,12 +234,16 @@ class BasicMediaInfo:
     """The sub-type of media, if applicable"""
     year: Optional[int]
     """The year of the release"""
-    release_date: Optional[Date]
+    start_date: Optional[Date]
     """The release date of the media"""
+    end_date: Optional[Date]
+    """The end date of the media"""
     unit_order: Optional[int]
     """Order of the unit of following entry. On TV shows this is the episode number, if applicable"""
     unit_counts: Optional[int]
     """The number of units (episodes, chapters) in the media"""
+    subunit_order: Optional[int]
+    """Order of the subunit of following entry. On video media this is the minute per episode, if applicable"""
     subunit_counts: Optional[int]
     """The number of subunits (minutes, pages) in the media, in total"""
     volume_order: Optional[int]
@@ -222,11 +258,13 @@ class BasicMediaInfo:
     """The country of origin of the media"""
     mappings: RelationMaps
     """Direct relation maps"""
-
-@dataclass
-class MediaInfo(BasicMediaInfo):
-    """Extended information regarding media, used for individual media entries from a provider"""
-    media_id: Optional[Union[int, str]]
-    """The ID of the media in the provider's database"""
-    media_slug: Optional[str]
-    """The slug of the media in the provider's database"""
+    source_data: Literal[
+        "allcinema", "anibrain", "anidb", "anilist", "animenewsnetwork",
+        "animeplanet", "anisearch", "anison", "annict", "aozora", "bangumi",
+        "douban", "doujinshi", "imdb", "kaize", "kitsu", "kinopoisk", "kurozora",
+        "lain", "livechart", "letterboxd", "mangadex", "mangaupdates", "myanimelist",
+        "nautiljon", "notify", "novelupdates", "otakotaku", "rottentomatoes",
+        "silveryasha", "shikimori", "syoboical", "tmdb", "tvdb", "trakt", "vndb",
+        "wikidata", "worldarts", "others", "rensetsu"
+    ] = "rensetsu"
+    """The source of the data"""
