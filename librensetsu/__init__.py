@@ -7,7 +7,7 @@ from .prettyprint import Platform, PrettyPrint, Status, translate_hex_to_rgb
 from .slugify import slugify
 from .transliterate import char_maps, transliterate_no_accent
 
-__version__ = '0.1.4'
+__version__ = '0.1.5'
 
 __all__ = [
     'char_maps',
