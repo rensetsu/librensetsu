@@ -1,10 +1,12 @@
 import json
-from typing import Literal, Union, Any
+from typing import Any, Literal, Union
 
+import cloudscraper
 from requests import Response
 
 from .const import pprint
 from .prettyprint import Platform, Status
+
 
 class Downloader:
     """Download json file"""

@@ -1,4 +1,6 @@
 from datetime import timedelta
+from models import Date
+from typing import Literal
 
 def pluralize(count: int, word: str) -> str:
     """
@@ -81,4 +83,36 @@ def convert_float_to_time(
 
     return result
 
-__all__ = ["convert_float_to_time"]
+Season = Literal["spring", "summer", "fall", "winter"]
+
+def translate_season(date: Date, is_early: bool = False) -> Season:
+    """
+    Translate a date to a season.
+    :param date: The date to translate.
+    :type date: Date
+    :param is_early: Whether to consider the season early or late.
+    :type is_early: bool, optional
+    :return: The season.
+    :rtype: Literal["spring", "summer", "fall", "winter"]
+    """
+    if Date.month is None:
+        raise ValueError("The month of the date must be specified.")
+
+    regular: dict[Season, list[int]] = {
+        "winter": [1, 2, 3],
+        "spring": [4, 5, 6],
+        "summer": [7, 8, 9],
+        "fall": [10, 11, 12],
+    }
+    early: dict[Season, list[int]] = {
+        "winter": [12, 1, 2],
+        "spring": [3, 4, 5],
+        "summer": [6, 7, 8],
+        "fall": [9, 10, 11],
+    }
+    select = early if is_early else regular
+    for season, months in select.items():
+        if date.month in months:
+            return season
+
+__all__ = ["convert_float_to_time", "translate_season", "Season"]
