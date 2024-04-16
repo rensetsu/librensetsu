@@ -4,7 +4,10 @@ import re
 
 from .transliterate import transliterate_no_accent
 
-def slugify(text: str, non_alphanum_as_dash: bool = False, transliterate: bool = True) -> str:
+
+def slugify(
+    text: str, non_alphanum_as_dash: bool = False, transliterate: bool = True
+) -> str:
     """
     Slugify the text
 

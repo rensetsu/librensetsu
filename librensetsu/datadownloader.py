@@ -42,9 +42,9 @@ class Downloader:
             }
         )
         pprint.print(
-            self.platform,
             Status.NOTICE,
             f"Prepare to download {self.file_name}.{self.file_type}",
+            platform=self.platform,
         )
 
     def _get(self) -> Union[Response, None]:
@@ -64,7 +64,7 @@ class Downloader:
                 )
             return response
         except ConnectionError as err:
-            pprint.print(self.platform, Status.ERR, f"Error: {err}")
+            pprint.print(Status.ERR, f"Error: {err}", platform=self.platform)
             return None
 
     def dumper(self) -> Any:
@@ -78,22 +78,26 @@ class Downloader:
         if response:
             content = response.json() if self.file_type == "json" else response.text
             if self.file_type == "json":
-                with open(f"database/raw/{self.file_name}.json", "w", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.json", "w", encoding="utf-8"
+                ) as file:
                     json.dump(content, file)
             else:
-                with open(f"database/raw/{self.file_name}.txt", "w", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.txt", "w", encoding="utf-8"
+                ) as file:
                     file.write(content)
             pprint.print(
-                self.platform,
                 Status.PASS,
                 f"Successfully download {self.file_name}.{self.file_type}",
+                platform=self.platform,
             )
             return content
         else:
             pprint.print(
-                self.platform,
                 Status.ERR,
                 "Failed to dump data, loading from local file",
+                platform=self.platform,
             )
             return self.loader()
 
@@ -106,16 +110,20 @@ class Downloader:
         """
         try:
             if self.file_type == "json":
-                with open(f"database/raw/{self.file_name}.json", "r", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.json", "r", encoding="utf-8"
+                ) as file:
                     return json.load(file)
             else:
-                with open(f"database/raw/{self.file_name}.txt", "r", encoding="utf-8") as file:
+                with open(
+                    f"database/raw/{self.file_name}.txt", "r", encoding="utf-8"
+                ) as file:
                     return file.read()
         # file not found
         except FileNotFoundError:
             pprint.print(
-                self.platform,
                 Status.ERR,
                 "Failed to load data, please download the data first, or check your internet connection",
+                platform=self.platform,
             )
             raise SystemExit

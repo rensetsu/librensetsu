@@ -1,10 +1,13 @@
 """Pretty print for the proccess"""
-from enum import Enum
+
 from datetime import datetime
+from enum import Enum
 from typing import Optional
+
 
 class Platform(Enum):
     """Platform color to be used for pretty printing."""
+
     ALLCINEMA = 0xEC0A0A
     ANIDB = 0x2A2F46
     ANILIST = 0x2F80ED
@@ -47,6 +50,7 @@ class Status(Enum):
         - Ready
         - Assert
     """
+
     # Use Hex color codes instead of ANSI color codes
     PASS = 0x2ECC71
     FAIL = 0xE74C3C
@@ -60,6 +64,7 @@ class Status(Enum):
     ASSERT = 0x808080
     BUILD = 0x4B0082
 
+
 def translate_hex_to_rgb(hex_: int) -> tuple[int, int, int]:
     """Translate hex to rgb"""
     return ((hex_ >> 16) & 0xFF, (hex_ >> 8) & 0xFF, hex_ & 0xFF)
@@ -68,10 +73,12 @@ def translate_hex_to_rgb(hex_: int) -> tuple[int, int, int]:
 class PrettyPrint:
     """Pretty print for the proccess"""
 
-    def __init__(self,
-                 platform: Platform = Platform.SYSTEM,
-                 show_date: bool = True,
-                 show_time: bool = True) -> None:
+    def __init__(
+        self,
+        platform: Platform = Platform.SYSTEM,
+        show_date: bool = True,
+        show_time: bool = True,
+    ) -> None:
         """
         Initialize the pretty print class
 
@@ -123,7 +130,7 @@ class PrettyPrint:
     def _format_to_hex(self, enums: Platform | Status) -> str:
         """
         Format the text block to hex
-        
+
         :param enums: The enum to be formatted
         :type enums: Platform | Status
         :return: The formatted text block
@@ -178,5 +185,6 @@ class PrettyPrint:
             f"{anullen}{cr_}{self._format_date()}{self._format_to_hex(platform)} {self._format_to_hex(status)} {message}",
             end=end,
         )
+
 
 __all__ = ["PrettyPrint", "Platform", "Status"]

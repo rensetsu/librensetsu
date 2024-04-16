@@ -1,6 +1,8 @@
 from datetime import timedelta
-from models import Date
 from typing import Literal
+
+from .models import Date
+
 
 def pluralize(count: int, word: str) -> str:
     """
@@ -23,6 +25,7 @@ def pluralize(count: int, word: str) -> str:
         else:
             return f"{count} {word}s"
 
+
 def convert_float_to_time(
     total_seconds: float | int,
     show_weeks: bool = False,
@@ -31,7 +34,7 @@ def convert_float_to_time(
     """
     Convert a float representing a number of days to a string representing the
     number of days, hours, and minutes.
-    
+
     :param time_float: The number of days.
     :type time_float: float | int
     :param show_weeks: Whether to show weeks in the output, defaults to False
@@ -83,7 +86,9 @@ def convert_float_to_time(
 
     return result
 
+
 Season = Literal["spring", "summer", "fall", "winter"]
+
 
 def translate_season(date: Date, is_early: bool = False) -> Season:
     """
@@ -95,7 +100,7 @@ def translate_season(date: Date, is_early: bool = False) -> Season:
     :return: The season.
     :rtype: Literal["spring", "summer", "fall", "winter"]
     """
-    if Date.month is None:
+    if date.month is None:
         raise ValueError("The month of the date must be specified.")
 
     regular: dict[Season, list[int]] = {
@@ -114,5 +119,8 @@ def translate_season(date: Date, is_early: bool = False) -> Season:
     for season, months in select.items():
         if date.month in months:
             return season
+    else:
+        raise ValueError("The month of the date must be between 1 and 12.")
+
 
 __all__ = ["convert_float_to_time", "translate_season", "Season"]

@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional, Union, Literal, List, Dict
+from typing import Dict, List, Literal, Optional, Union
 
 Iso31661A2 = Literal[
     "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR",
@@ -53,9 +53,11 @@ Iso639S2 = Literal[
     "yo", "za", "zu"
 ]
 
+
 @dataclass
 class Date:
     """Information regarding release dates"""
+
     year: Optional[int] = None
     """The year of the release"""
     month: Optional[int] = None
@@ -72,7 +74,7 @@ class Date:
     """The timezone of the release, in format of +/-HH:MM"""
 
     @staticmethod
-    def from_iso(iso: str) -> 'Date':
+    def from_iso(iso: str) -> "Date":
         """
         Create a Date object from an ISO 8601 string.
 
@@ -81,7 +83,7 @@ class Date:
         return Date.from_datetime(datetime.fromisoformat(iso))
 
     @staticmethod
-    def from_datetime(dt: datetime) -> 'Date':
+    def from_datetime(dt: datetime) -> "Date":
         """Create a Date object from a datetime object"""
         return Date(
             year=dt.year,
@@ -90,12 +92,14 @@ class Date:
             hour=dt.hour,
             minute=dt.minute,
             second=dt.second,
-            timezone=dt.strftime("%z")
+            timezone=dt.strftime("%z"),
         )
+
 
 @dataclass
 class PictureUrls:
     """Information regarding picture URLs"""
+
     original: Optional[str] = None
     """An original picture URL"""
     large: Optional[str] = None
@@ -107,25 +111,31 @@ class PictureUrls:
     tiny: Optional[str] = None
     """A tiny picture URL"""
 
+
 @dataclass
 class IdSlugPair:
     """Information regarding ID and slug pairs"""
+
     id: Optional[Union[int, str]] = None
     """The ID of the media"""
     slug: Optional[str] = None
     """The slug of the media"""
 
+
 @dataclass
 class ConventionalMapping(IdSlugPair):
     """Mapping information for conventional media databases"""
+
     media_type: Optional[Literal["tv", "movie", "shows", "movies"]] = None
     """The type of media"""
     season: Optional[int] = None
     """The season of the media, if applicable"""
 
+
 @dataclass
 class RelationMaps:
     """Information regarding direct relation maps"""
+
     allcinema: Optional[int] = None
     """AllCinema ID (Regional, JP): https://www.allcinema.net"""
     anibrain: Optional[int] = None
@@ -189,7 +199,7 @@ class RelationMaps:
     shikimori: Optional[IdSlugPair] = None
     """
     Shikimori ID, mirrors MyAnimeList (Regional, RU): https://shikimori.one
-    
+
     Slug most of the time is equal to ID, however, some title may have additiona
     alphabet as the prefix (eg. `z28977`). Use slug to redirect user without
     HTTP 301, eg: https://shikimori.one/animes/z28977
@@ -211,9 +221,11 @@ class RelationMaps:
     others: Optional[Dict[str, Union[int, str]]] = None
     """Other IDs"""
 
+
 @dataclass
 class MediaInfo:
     """Information regarding media"""
+
     uuid: str
     """The UUID of the media, used to correlate with the provider"""
     title_display: str
@@ -228,7 +240,9 @@ class MediaInfo:
     """Synonyms of the media"""
     is_adult: Optional[bool]
     """Whether the media is adult content, `None` if service does not provide this information"""
-    media_type: Literal["anime", "manga", "lightnovel", "shows", "movies", "books", "other"]
+    media_type: Literal[
+        "anime", "manga", "lightnovel", "shows", "movies", "books", "other"
+    ]
     """The type of media"""
     media_sub_type: Optional[str]
     """The sub-type of media, if applicable"""
@@ -259,12 +273,45 @@ class MediaInfo:
     mappings: RelationMaps
     """Direct relation maps"""
     source_data: Literal[
-        "allcinema", "anibrain", "anidb", "anilist", "animenewsnetwork",
-        "animeplanet", "anisearch", "anison", "annict", "aozora", "bangumi",
-        "douban", "doujinshi", "imdb", "kaize", "kitsu", "kinopoisk", "kurozora",
-        "lain", "livechart", "letterboxd", "mangadex", "mangaupdates", "myanimelist",
-        "nautiljon", "notify", "novelupdates", "otakotaku", "rottentomatoes",
-        "silveryasha", "shikimori", "syoboical", "tmdb", "tvdb", "trakt", "vndb",
-        "wikidata", "worldarts", "others", "rensetsu"
+        "allcinema",
+        "anibrain",
+        "anidb",
+        "anilist",
+        "animenewsnetwork",
+        "animeplanet",
+        "anisearch",
+        "anison",
+        "annict",
+        "aozora",
+        "bangumi",
+        "douban",
+        "doujinshi",
+        "imdb",
+        "kaize",
+        "kitsu",
+        "kinopoisk",
+        "kurozora",
+        "lain",
+        "livechart",
+        "letterboxd",
+        "mangadex",
+        "mangaupdates",
+        "myanimelist",
+        "nautiljon",
+        "notify",
+        "novelupdates",
+        "otakotaku",
+        "rottentomatoes",
+        "silveryasha",
+        "shikimori",
+        "syoboical",
+        "tmdb",
+        "tvdb",
+        "trakt",
+        "vndb",
+        "wikidata",
+        "worldarts",
+        "others",
+        "rensetsu",
     ] = "rensetsu"
     """The source of the data"""
