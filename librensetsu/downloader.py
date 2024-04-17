@@ -87,10 +87,11 @@ class Downloader:
         """
         resp.raise_for_status()
         dlen = int(resp.headers.get("content-length", 0)) // 1024
+        dlen2 = (dlen + 1) if dlen not in [0, None] else dlen
         self.pr.print(Status.INFO, f"Downloading from {self.url}")
         start_time = time()
         chk = 0
-        with open(self.save_as, "wb") as file, abr(total=dlen + 1) as bar:  # type: ignore
+        with open(self.save_as, "wb") as file, abr(total=dlen2) as bar:  # type: ignore
             for chunk in resp.iter_content(chunk_size=1024):
                 if chunk:
                     file.write(chunk)
