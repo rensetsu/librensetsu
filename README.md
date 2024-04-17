@@ -28,6 +28,7 @@ unifieddatabase.
 - `fake-useragent`: Random user agent generator
 - `fugashi[unidic]`: Japanese tokenizer, required by `cutlet`
 - `fuzzywuzzy`: Fuzzy string matching library
+- `pluralizer`: English pluralization library
 - `python-Levenshtein`: Levenshtein distance calculation library, required by
   `fuzzywuzzy`
 - `requests`: HTTP client library

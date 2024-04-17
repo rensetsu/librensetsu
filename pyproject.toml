@@ -4,22 +4,21 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "librensetsu"
-authors = [
-    {name = "nattadasu", email = "hello@nattadasu.my.id"}
-]
+authors = [{ name = "nattadasu", email = "hello@nattadasu.my.id" }]
 dependencies = [
-    "beautifulsoup4",
-    "requests",
     "alive-progress",
+    "beautifulsoup4",
     "cloudscraper",
     "cutlet",
     "fake-useragent",
     "fugashi[unidic]",
     "fuzzywuzzy",
+    "pluralizer",
     "python-Levenshtein",
+    "requests",
 ]
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = { text = "MIT" }
 description = "A Python library for scraping and parsing data from various websites."
 classifiers = [
     "Development Status :: 3 - Alpha",
@@ -36,9 +35,18 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
     "Topic :: Internet :: WWW/HTTP :: Site Management",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
-    "Typing :: Typed"
+    "Typing :: Typed",
 ]
-keywords = ["web scraping", "data parsing", "web crawling", "web spider", "web scraper", "data scraper", "data crawler", "data spider"]
+keywords = [
+    "web scraping",
+    "data parsing",
+    "web crawling",
+    "web spider",
+    "web scraper",
+    "data scraper",
+    "data crawler",
+    "data spider",
+]
 dynamic = ["version", "readme"]
 
 [project.urls]

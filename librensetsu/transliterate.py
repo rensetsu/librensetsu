@@ -678,7 +678,7 @@ def transliterate_no_accent(text: str, is_japanese: bool = False) -> str:
     :rtype: str
     """
     if is_japanese:
-        text = Cutlet().romaji(text)
+        text = Cutlet().romaji(text)  # type: ignore
     for k, v in char_maps.items():
         text = text.replace(k, v)
     return text

@@ -4,9 +4,9 @@ from .const import (
     IS_GITHUB_WORKFLOW,
     IS_GITHUB_WORKFLOW_DISPATCH,
 )
-from .datadownloader import Downloader
 from .download_unidic import download_unidic
-from .humanclock import convert_float_to_time, translate_season
+from .grammar import pluralize
+from .humanclock import convert_float_to_time, translate_season, Season
 from .models import (
     ConventionalMapping,
     Date,
@@ -19,7 +19,7 @@ from .prettyprint import Platform, PrettyPrint, Status, translate_hex_to_rgb
 from .slugify import slugify
 from .transliterate import char_maps, transliterate_no_accent
 
-__version__ = "0.1.7"
+__version__ = "0.2.0"
 
 __all__ = [
     "char_maps",
@@ -27,7 +27,6 @@ __all__ = [
     "convert_float_to_time",
     "Date",
     "download_unidic",
-    "Downloader",
     "GITHUB_EVENT_NAME",
     "GITHUB_WORKSPACE",
     "IdSlugPair",
@@ -36,8 +35,10 @@ __all__ = [
     "MediaInfo",
     "PictureUrls",
     "Platform",
+    "pluralize",
     "PrettyPrint",
     "RelationMaps",
+    "Season",
     "slugify",
     "Status",
     "translate_hex_to_rgb",
