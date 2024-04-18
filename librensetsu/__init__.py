@@ -6,7 +6,8 @@ from .const import (
 )
 from .download_unidic import download_unidic
 from .grammar import pluralize
-from .humanclock import convert_float_to_time, translate_season, Season
+from .graphql import GraphQL
+from .humanclock import Season, convert_float_to_time, translate_season
 from .models import (
     ConventionalMapping,
     Date,
@@ -19,7 +20,7 @@ from .prettyprint import Platform, PrettyPrint, Status, translate_hex_to_rgb
 from .slugify import slugify
 from .transliterate import char_maps, transliterate_no_accent
 
-__version__ = "0.2.3"
+__version__ = "0.2.4"
 
 __all__ = [
     "char_maps",
@@ -29,6 +30,7 @@ __all__ = [
     "download_unidic",
     "GITHUB_EVENT_NAME",
     "GITHUB_WORKSPACE",
+    "GraphQL",
     "IdSlugPair",
     "IS_GITHUB_WORKFLOW_DISPATCH",
     "IS_GITHUB_WORKFLOW",
