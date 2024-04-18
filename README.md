@@ -23,12 +23,14 @@ unifieddatabase.
 
 - `alive-progress`: Progress bar for long running tasks
 - `beautifulsoup4`: HTML parser
+- `dacite`: Utility to convert dict to dataclass recursively
 - `cloudscraper`: Cloudflare bypassing library
 - `cutlet`: Handle Japanese text transliteration to Latin
 - `fake-useragent`: Random user agent generator
 - `fugashi[unidic]`: Japanese tokenizer, required by `cutlet`
 - `fuzzywuzzy`: Fuzzy string matching library
 - `pluralizer`: English pluralization library
+- `python-dotenv`: Loads `.env` file as environment variables.
 - `python-Levenshtein`: Levenshtein distance calculation library, required by
   `fuzzywuzzy`
 - `requests`: HTTP client library

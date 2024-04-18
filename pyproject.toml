@@ -8,12 +8,14 @@ authors = [{ name = "nattadasu", email = "hello@nattadasu.my.id" }]
 dependencies = [
     "alive-progress",
     "beautifulsoup4",
+    "dacite",
     "cloudscraper",
     "cutlet",
     "fake-useragent",
     "fugashi[unidic]",
     "fuzzywuzzy",
     "pluralizer",
+    "python-dotenv",
     "python-Levenshtein",
     "requests",
 ]

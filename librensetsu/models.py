@@ -216,7 +216,7 @@ class RelationMaps:
     """VNDB ID: https://vndb.org"""
     wikidata: Optional[str] = None
     """Wikidata ID: https://www.wikidata.org"""
-    worldarts: Optional[int] = None
+    worldart: Optional[int] = None
     """World Art ID (Regional, RU): http://www.world-art.ru"""
     others: Optional[Dict[str, Union[int, str]]] = None
     """Other IDs"""
@@ -310,7 +310,7 @@ class MediaInfo:
         "trakt",
         "vndb",
         "wikidata",
-        "worldarts",
+        "worldart",
         "others",
         "rensetsu",
     ] = "rensetsu"
