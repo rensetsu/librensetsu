@@ -148,6 +148,8 @@ class RelationMaps:
     """Anime News Network ID: https://www.animenewsnetwork.com"""
     animeplanet: Optional[str] = None
     """Anime-Planet slug: https://www.anime-planet.com"""
+    animethemes: Optional[IdSlugPair] = None
+    """AnimeThemes ID: https://animethemes.moe"""
     anisearch: Optional[int] = None
     """AniSearch ID (Regional, DE ES FR JP IT): https://www.anisearch.com"""
     anison: Optional[int] = None
@@ -279,21 +281,20 @@ class MediaInfo:
         "anilist",
         "animenewsnetwork",
         "animeplanet",
+        "animethemes",
         "anisearch",
         "anison",
         "annict",
-        "aozora",
         "bangumi",
         "douban",
         "doujinshi",
         "imdb",
         "kaize",
-        "kitsu",
         "kinopoisk",
+        "kitsu",
         "kurozora",
-        "lain",
-        "livechart",
         "letterboxd",
+        "livechart",
         "mangadex",
         "mangaupdates",
         "myanimelist",
