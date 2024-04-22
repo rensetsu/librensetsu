@@ -79,8 +79,27 @@ class Date:
         Create a Date object from an ISO 8601 string.
 
         Format: YYYY-MM-DDTHH:MM:SSZZZZ (with ZZZZ being the timezone offset in the format of +/-HH:MM)
+        :param iso: String value in ISO 8601 format
+        :type iso: str
+        :return: Date object
+        :rtype: Date
         """
         return Date.from_datetime(datetime.fromisoformat(iso))
+
+    @staticmethod
+    def from_timestamp(timestamp: int | float | str) -> "Date":
+        """
+        Create an instance of Date object from a timestamp in UTC
+        :param timestamp: Value of timestamp to convert from
+        :type timestamp: int | float | str
+        :return: Date object
+        :rtype: Date
+        """
+        if isinstance(timestamp, str):
+            timestamp = int(timestamp)
+        if not isinstance(timestamp, float):
+            timestamp = float(timestamp)
+        return Date.from_datetime(datetime.utcfromtimestamp(timestamp))
 
     @staticmethod
     def from_datetime(dt: datetime) -> "Date":
