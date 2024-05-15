@@ -363,16 +363,20 @@ class MediaInfo(BaseModel):
     picture_urls: List[PictureUrls] = Field(
         ..., description="List of picture URLs of the media"
     )
+    """List of picture URLs of the media"""
     country_of_origin: Optional[CountryAlpha2] = Field(
         None, description="The country of origin of the media"
     )
+    """The country of origin of the media"""
     mappings: Optional[RelationMaps] = Field(
         None,
         description="Information about the direct relations of the media in other databases",
     )
+    """Information about the direct relations of the media in other databases"""
     languages: Optional[List[LanguageAlpha2]] = Field(
         None, description="The languages of the media"
     )
+    """The languages of the media"""
     source_data: Literal[
         "allcinema",
         "anibrain",
