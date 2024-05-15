@@ -17,10 +17,16 @@ from .models import (
     RelationMaps,
 )
 from .prettyprint import Platform, PrettyPrint, Status, translate_hex_to_rgb
+from .pydanticmodels import ConventionalMapping as pydanticConventionalMapping
+from .pydanticmodels import DateTime as pydanticDateTime
+from .pydanticmodels import IdSlugPair as pydanticIdSlugPair
+from .pydanticmodels import MediaInfo as pydanticMediaInfo
+from .pydanticmodels import PictureUrls as pydanticPictureUrls
+from .pydanticmodels import RelationMaps as pydanticRelationMaps
 from .slugify import slugify
 from .transliterate import char_maps, transliterate_no_accent
 
-__version__ = "0.2.6"
+__version__ = "0.3.0"
 
 __all__ = [
     "char_maps",
@@ -39,6 +45,12 @@ __all__ = [
     "Platform",
     "pluralize",
     "PrettyPrint",
+    "pydanticConventionalMapping",
+    "pydanticDateTime",
+    "pydanticIdSlugPair",
+    "pydanticMediaInfo",
+    "pydanticPictureUrls",
+    "pydanticRelationMaps",
     "RelationMaps",
     "Season",
     "slugify",
