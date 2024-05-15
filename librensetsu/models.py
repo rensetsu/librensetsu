@@ -291,6 +291,8 @@ class MediaInfo:
     """The country of origin of the media"""
     mappings: RelationMaps
     """Direct relation maps"""
+    languages: Optional[List[Iso639S2]] = None
+    """Languages of the media"""
     source_data: Literal[
         "allcinema",
         "anibrain",
