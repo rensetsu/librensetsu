@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Literal, Optional, Union
 
 Iso31661A2 = Literal[
@@ -87,7 +87,7 @@ class Date:
         return Date.from_datetime(datetime.fromisoformat(iso))
 
     @staticmethod
-    def from_timestamp(timestamp: int | float | str) -> "Date":
+    def from_timestamp(timestamp: Union[int, float, str]) -> "Date":
         """
         Create an instance of Date object from a timestamp in UTC
         :param timestamp: Value of timestamp to convert from
@@ -95,11 +95,9 @@ class Date:
         :return: Date object
         :rtype: Date
         """
-        if isinstance(timestamp, str):
-            timestamp = int(timestamp)
-        if not isinstance(timestamp, float):
+        if isinstance(timestamp, str) or isinstance(timestamp, int):
             timestamp = float(timestamp)
-        return Date.from_datetime(datetime.utcfromtimestamp(timestamp))
+        return Date.from_datetime(datetime.fromtimestamp(timestamp, tz=timezone.utc))
 
     @staticmethod
     def from_datetime(dt: datetime) -> "Date":
