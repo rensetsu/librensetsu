@@ -26,7 +26,7 @@ from .pydanticmodels import RelationMaps as pydanticRelationMaps
 from .slugify import slugify
 from .transliterate import char_maps, transliterate_no_accent
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 __all__ = [
     "char_maps",
