@@ -2,6 +2,14 @@ from pluralizer import Pluralizer
 
 plr = Pluralizer()
 
+uncountables = [
+    "anime",
+    "manga",
+]
+
+for word in uncountables:
+    plr.addUncountableRule(word)
+
 
 def pluralize(count: int, word: str) -> str:
     """
