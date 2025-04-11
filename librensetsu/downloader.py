@@ -91,12 +91,12 @@ class Downloader:
         self.pr.print(Status.INFO, f"Downloading from {self.url}")
         start_time = time()
         chk = 0
-        with open(self.save_as, "wb") as file, abr(total=dlen2) as bar:  # type: ignore
-            for chunk in resp.iter_content(chunk_size=1024):
+        with open(self.save_as, "wb") as file, abr(total=dlen2, unit="B", scale="IEC") as bar:  # type: ignore
+            for chunk in resp.iter_content(chunk_size=8192):
                 if chunk:
                     file.write(chunk)
                     chk += 1
-                    bar()
+                    bar(8192)
         end_time = time()
         self.pr.print(
             Status.INFO,
