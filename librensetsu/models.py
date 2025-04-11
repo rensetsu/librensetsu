@@ -150,7 +150,7 @@ class ConventionalMapping(IdSlugPair):
 
 
 @dataclass
-class TraktSeason(IdSlugPair)
+class TraktSeason(IdSlugPair):
     """Mapping info on Trakt if the ID is a season only"""
 
     media_type: Optional[Literal["seasons"]] = None
