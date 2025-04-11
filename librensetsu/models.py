@@ -143,11 +143,18 @@ class IdSlugPair:
 class ConventionalMapping(IdSlugPair):
     """Mapping information for conventional media databases"""
 
-    media_type: Optional[Literal["tv", "movie", "shows", "movies"]] = None
+    media_type: Optional[Literal["tv", "movie", "shows", "movies", "anime"]] = None
     """The type of media"""
     season: Optional[int] = None
     """The season of the media, if applicable"""
 
+
+@dataclass
+class TraktSeason(IdSlugPair)
+    """Mapping info on Trakt if the ID is a season only"""
+
+    media_type: Optional[Literal["seasons"]] = None
+    """The type of ID"""
 
 @dataclass
 class RelationMaps:
@@ -215,6 +222,8 @@ class RelationMaps:
     """Rotten Tomatoes slug: https://www.rottentomatoes.com"""
     silveryasha: Optional[int] = None
     """Silver-Yasha DB Tontonan Indonesia (Regional, ID): https://db.silveryasha.web.id"""
+    simkl: Optional[ConventionalMapping] = None
+    """SIMKL Fixed ID: https://simkl.com"""
     shikimori: Optional[IdSlugPair] = None
     """
     Shikimori ID, mirrors MyAnimeList (Regional, RU): https://shikimori.one
@@ -229,7 +238,7 @@ class RelationMaps:
     """The Movie Database ID: https://www.themoviedb.org"""
     tvdb: Optional[ConventionalMapping] = None
     """The TVDB ID: https://www.thetvdb.com"""
-    trakt: Optional[ConventionalMapping] = None
+    trakt: Optional[Union[ConventionalMapping, TraktSeason]] = None
     """Trakt ID: https://trakt.tv"""
     vndb: Optional[int] = None
     """VNDB ID: https://vndb.org"""
