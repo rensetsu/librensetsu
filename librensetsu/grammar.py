@@ -8,7 +8,7 @@ uncountables = [
 ]
 
 for word in uncountables:
-    plr.addUncountableRule(word)
+    plr.add_uncountable_rule(word)
 
 
 def pluralize(count: int, word: str) -> str:
