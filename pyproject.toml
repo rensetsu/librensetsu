@@ -10,7 +10,7 @@ dependencies = [
     "beautifulsoup4",
     "dacite",
     "cloudscraper",
-    "cutlet @ git+https://github.com/ryuuRyuusei/cutlet-pure@master; sys_platform=='win32' or python_version>='3.13'",
+    "cutlet @ git+https://github.com/ryuuRyuusei/cutlet-pure.git@master ; sys_platform=='win32' or python_version>='3.13'",
     "cutlet; sys_platform!='win32' and python_version<'3.13'",
     "fake-useragent",
     "fugashi[unidic]",
